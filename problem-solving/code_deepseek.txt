@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* copy_string(const char* src) {
+    char* dest = malloc(strlen(src) + 1); // Allocate memory for the copy
+    if (dest == NULL) {
+        return NULL; // Handle allocation failure
+    }
+    strcpy(dest, src);
+    return dest;
+}
+
+int main() {
+    char* original = "Hello, world!";
+    char* copy = copy_string(original);
+
+    if (copy == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    printf("Copied string: %s\n", copy);
+    
+    free(copy); // Free the allocated memory
+    return 0;
+}
+
+Summary of Fixes:
+Memory Allocation:
+
+The original code didn't allocate memory for dest before copying, which would cause undefined behavior (likely a crash).
+
+Fixed by using malloc() to allocate sufficient space for the string plus null terminator.
+
+Null Termination:
+
+The original code would have failed to properly terminate the string if memory wasn't allocated.
+
+Fixed by allocating strlen(src) + 1 bytes to ensure space for the null terminator.
+
+Error Handling:
+
+Added a check for malloc() failure and return NULL if allocation fails.
+
+In main(), added a check for a failed copy operation.
+
+Memory Leak Prevention:
+
+Added free(copy) in main() to prevent memory leaks since we allocated memory in copy_string().
+
+Buffer Safety:
+
+While strcpy() is safe here because we allocated exactly enough space, in general strncpy() might be safer for fixed-size buffers (though not needed in this case).
+
+The fixed version properly allocates memory for the copy, checks for errors, and cleans up the allocated memory when done. This makes the program both correct and robust.

@@ -1,0 +1,53 @@
+Problem Statement:
+
+Given:
+
+A = Integral from 0 to 1 of e^(x^2) dx
+
+B = Integral from 1 to e^2 of ln(sqrt(x)) dx
+
+Find A + B.
+
+Solution:
+
+Part A: Evaluating Integral e^(x^2) from 0 to 1
+
+This integral doesn't have an elementary antiderivative. We can express it using:
+
+Series expansion: e^(x^2) = sum from n=0 to ∞ of (x^(2n)/n!)
+Integrating term by term gives: A = sum from n=0 to ∞ of 1/(n!(2n+1)) ≈ 1.46265
+
+Using the imaginary error function:
+A = (√π/2) erfi(1) ≈ 1.46265
+
+Part B: Evaluating Integral ln(√x) from 1 to e^2
+
+First simplify:
+ln(√x) = (1/2)ln x
+
+So B = (1/2) × integral of ln x from 1 to e^2
+
+Using integration by parts:
+∫ ln x dx = x ln x - x + C
+
+Evaluating from 1 to e^2:
+= [e^2 ln(e^2) - e^2] - [1 ln 1 - 1] = (2e^2 - e^2) - (-1) = e^2 + 1
+
+Thus:
+B = (e^2 + 1)/2 ≈ 4.19453
+
+Combining A and B:
+
+Exact form:
+A + B = (√π erfi(1) + e^2 + 1)/2
+
+Numerical verification:
+A ≈ 1.46265
+B ≈ 4.19453
+A + B ≈ 5.65718
+
+Using exact form:
+(2.9253 + 7.38906 + 1)/2 ≈ 5.65718 (matches)
+
+Final Answer:
+(√π erfi(1) + e^2 + 1)/2

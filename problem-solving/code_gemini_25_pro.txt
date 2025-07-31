@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to dynamically allocate memory and copy a string
+char* copy_string(const char* src) {
+    // Calculate the length of the source string, including the null terminator
+    size_t len = strlen(src) + 1; 
+    
+    // Allocate memory for the destination string
+    char* dest = (char*)malloc(len);
+    
+    // Check if memory allocation was successful
+    if (dest == NULL) {
+        perror("Failed to allocate memory for string copy");
+        return NULL; // Return NULL to indicate an error
+    }
+    
+    // Copy the source string to the newly allocated memory
+    strcpy(dest, src);
+    
+    return dest;
+}
+
+int main() {
+    char* original = "Hello, world!";
+    char* copy = NULL; // Initialize copy to NULL
+
+    // Call copy_string and check for successful allocation
+    copy = copy_string(original);
+
+    if (copy != NULL) {
+        printf("Copied string: %s\n", copy);
+    } else {
+        printf("Failed to copy string.\n");
+    }
+
+    // Free the dynamically allocated memory to prevent memory leaks
+    free(copy); 
+    copy = NULL; // Set the pointer to NULL after freeing to prevent dangling pointers
+
+    return 0;
+}
+
+Summary of Fixes
+The primary issue in your original code was undefined behavior due to attempting to copy a string into an unallocated pointer. The copy_string function was modified to dynamically allocate memory for the destination string using malloc, ensuring there's a valid memory location to copy the source string into.
+
+Additionally, a crucial fix was implemented to prevent memory leaks. The dynamically allocated memory for copy in main is now freed using free(copy) once it's no longer needed. This is essential for good memory management in C.

@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* copy_string(const char* src) {
+    if (src == NULL) {
+        return NULL;
+    }
+    
+    char* dest = malloc(strlen(src) + 1);
+    if (dest == NULL) {
+        return NULL; // Memory allocation failed
+    }
+    
+    strcpy(dest, src);
+    return dest;
+}
+
+int main() {
+    char* original = "Hello, world!";
+    char* copy = copy_string(original);
+
+    if (copy != NULL) {
+        printf("Copied string: %s\n", copy);
+        free(copy); // Free allocated memory
+    } else {
+        printf("Failed to copy string\n");
+    }
+
+    return 0;
+}
+
+Summary of Fixes:
+Major Issue Fixed:
+
+Uninitialized pointer: The original code declared char* dest but never allocated memory for it. Using strcpy() with an uninitialized pointer would cause undefined behavior (likely a crash).
+
+Fixes Applied:
+
+Memory allocation: Added malloc(strlen(src) + 1) to allocate memory for the destination string (+1 for the null terminator).
+Error checking: Added null pointer checks for both the input parameter and malloc return value to handle edge cases gracefully.
+Memory management: Added free(copy) in main() to prevent memory leaks by releasing the allocated memory.
+Safe error handling: Added proper error checking in main() to handle cases where string copying might fail.
+
+The original code would have crashed when strcpy() tried to copy to an uninitialized memory location. The fixed version properly allocates memory, handles errors, and cleans up after itself.

@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* copy_string(const char* src) {
+    // Allocate memory for the new string (+1 for the null terminator)
+    char* dest = malloc(strlen(src) + 1);
+    if (dest == NULL) {
+        // Handle allocation failure
+        return NULL;
+    }
+    strcpy(dest, src);
+    return dest;
+}
+
+int main() {
+    char* original = "Hello, world!";
+    char* copy = copy_string(original);
+
+    if (copy == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("Copied string: %s\n", copy);
+
+    // Free the memory allocated for the copy
+    free(copy);
+
+    return 0;
+}
+
+Summary of Fixes
+Uninitialized Pointer (dest)
+
+Problem:
+char* dest; was declared but never allocated memory before calling strcpy(dest, src);, which leads to undefined behavior (likely a crash).
+
+Fix:
+Properly allocate memory: char* dest = malloc(strlen(src) + 1);.
+
+No Null-Terminator Allocation
+
+Problem:
+If you forget +1 in malloc(strlen(src) + 1), the copied string may not be properly null-terminated.
+
+Fix:
+Ensured +1 is used for the null-terminator.
+
+No NULL Check on malloc
+
+Problem:
+If malloc fails, the function returns an invalid pointer.
+
+Fix:
+Added a NULL check after malloc and returned NULL if allocation failed.
+
+No Memory Freeing
+
+Problem:
+Memory allocated with malloc was never freed, causing a memory leak.
+
+Fix:
+Added free(copy); in main().
+
+Missing Error Handling in main()
+
+Problem:
+If copy_string fails, program continues and passes NULL to printf.
+
+Fix:
+Checked for NULL and printed an error message before exiting.

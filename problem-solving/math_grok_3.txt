@@ -1,0 +1,107 @@
+Solution to A + B
+
+We need to compute A + B, where:
+
+
+
+
+
+A = ∫ from 0 to 1 of e^(x^2) dx
+
+
+
+B = ∫ from 1 to e^2 of ln(√x) dx
+
+Step 1: Compute A = ∫ from 0 to 1 of e^(x^2) dx
+
+The integrand is e^(x^2), with limits from 0 to 1. The function e^(x^2) does not have an elementary antiderivative, meaning it cannot be expressed in terms of standard functions like polynomials, exponentials, or logarithms. This integral is known to be non-elementary and is often evaluated numerically or expressed using special functions (e.g., related to the error function). Since the limits are finite (0 to 1), the integral yields a positive real number, as e^(x^2) ≥ 1 for x in [0,1].
+
+For now, we note that A cannot be simplified analytically and may require numerical approximation. We will compute B and revisit A later to check for possible simplification when summing.
+
+Step 2: Compute B = ∫ from 1 to e^2 of ln(√x) dx
+
+Simplify the integrand using logarithm properties:
+
+ln(√x) = ln(x^(1/2)) = (1/2) ln x
+
+Thus, the integral becomes:
+
+B = ∫ from 1 to e^2 of (1/2) ln x dx = (1/2) ∫ from 1 to e^2 of ln x dx
+
+To compute ∫ ln x dx, use integration by parts. Let:
+
+
+
+
+
+u = ln x, so du = (1/x) dx
+
+
+
+dv = dx, so v = x
+
+Using the integration by parts formula, ∫ u dv = uv - ∫ v du:
+
+∫ ln x dx = x ln x - ∫ x * (1/x) dx = x ln x - ∫ 1 dx = x ln x - x + C
+
+Evaluate the definite integral:
+
+∫ from 1 to e^2 of ln x dx = [x ln x - x] from 1 to e^2
+
+
+
+
+
+At x = e^2:
+
+e^2 ln(e^2) - e^2 = e^2 * 2 - e^2 = 2e^2 - e^2 = e^2
+
+
+
+
+
+At x = 1:
+
+1 * ln 1 - 1 = 0 - 1 = -1
+
+So:
+
+∫ from 1 to e^2 of ln x dx = e^2 - (-1) = e^2 + 1
+
+Thus:
+
+B = (1/2) (e^2 + 1)
+
+Step 3: Compute A + B
+
+We have:
+
+B = (1/2) (e^2 + 1)
+
+For A = ∫ from 0 to 1 of e^(x^2) dx, since it lacks an elementary antiderivative, we consider numerical approximation. The function e^(x^2) is continuous and increasing on [0,1], with e^0 = 1 at x=0 and e^1 = e ≈ 2.718 at x=1. Numerical integration (e.g., via the trapezoidal rule or software) approximates:
+
+A ≈ 1.46265
+
+For B:
+
+e^2 ≈ 7.389, e^2 + 1 ≈ 8.389, B = (1/2) (e^2 + 1) ≈ 8.389/2 ≈ 4.1945
+
+Thus:
+
+A + B ≈ 1.46265 + 4.1945 ≈ 5.65715
+
+Step 4: Check for Exact Simplification
+
+To ensure no exact solution is missed, we explore whether A and B relate in a way that simplifies A + B. The integrands e^(x^2) and ln(√x) don’t suggest an immediate substitution or transformation that combines them. Substitutions like x = e^t for A or adjusting limits in B don’t align the integrals. Since A is non-elementary and B is exact, the sum likely requires numerical evaluation of A.
+
+Final Answer
+
+The exact form is:
+
+A + B = ∫ from 0 to 1 of e^(x^2) dx + (1/2) (e^2 + 1)
+
+Numerical approximation gives:
+
+A + B ≈ 5.657
+
+Final Answer: ∫ from 0 to 1 of e^(x^2) dx + (1/2) (e^2 + 1) ≈ 5.657

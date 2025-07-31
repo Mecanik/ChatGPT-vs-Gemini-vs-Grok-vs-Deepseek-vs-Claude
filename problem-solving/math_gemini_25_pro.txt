@@ -1,0 +1,52 @@
+The sum of the two integrals, A + B, is approximately 5.657.
+
+Here's a breakdown of the calculation:
+
+Integral A
+The first integral is:
+
+A=∫ 
+0
+1
+​
+ e 
+x 
+2
+ 
+ dx
+
+This integral, which is a form of the Gaussian integral, doesn't have a solution that can be expressed in terms of elementary functions. Therefore, its value is found using numerical methods. The approximate value of A is 1.463.
+
+Integral B
+The second integral is:
+
+B=∫ 
+1
+e 
+2
+ 
+​
+ ln( 
+x
+
+​
+ )dx
+
+This integral can be solved analytically. By simplifying the integrand and using integration by parts, we find that:
+
+B= 
+2
+e 
+2
+ +1
+​
+ 
+
+The approximate value of B is 4.194.
+
+The Sum: A + B
+Adding the values of the two integrals gives us the final result:
+
+A+B≈1.463+4.194=5.657
+
+The more precise value, obtained from numerical calculation, is approximately 5.657179795372472.

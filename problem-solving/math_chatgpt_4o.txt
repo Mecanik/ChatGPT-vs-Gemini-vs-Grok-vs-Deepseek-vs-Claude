@@ -1,0 +1,66 @@
+Problem:
+
+Let:
+
+- A = ∫ from 0 to 1 of e^(x^2) dx
+- B = ∫ from 1 to e^2 of ln(√x) dx
+
+Find A + B.
+
+---
+
+1. Compute A = ∫₀¹ e^(x²) dx
+
+There is no elementary antiderivative for e^(x²), so we approximate it numerically:
+
+A ≈ ∫₀¹ e^(x²) dx ≈ 1.46265
+
+---
+
+2. Compute B = ∫₁^{e²} ln(√x) dx
+
+Simplify the integrand:
+
+ln(√x) = ln(x^(1/2)) = (1/2) * ln(x)
+
+So:
+
+B = ∫₁^{e²} (1/2) * ln(x) dx = (1/2) * ∫₁^{e²} ln(x) dx
+
+Use integration by parts:
+
+Let:
+u = ln(x)      => du = (1/x) dx
+dv = dx        => v = x
+
+Then:
+
+∫ ln(x) dx = x ln(x) - x + C
+
+Apply the limits:
+
+∫₁^{e²} ln(x) dx = [x ln(x) - x] from 1 to e²
+
+At x = e²:
+e² * ln(e²) - e² = e² * 2 - e² = 2e² - e² = e²
+
+At x = 1:
+1 * ln(1) - 1 = 0 - 1 = -1
+
+So:
+
+∫₁^{e²} ln(x) dx = e² + 1
+
+Then:
+
+B = (1/2)(e² + 1)
+
+Approximate e² ≈ 7.389
+
+B ≈ (1/2)(7.389 + 1) = (1/2)(8.389) = 4.1945
+
+---
+
+Final Answer:
+
+A + B ≈ 1.46265 + 4.1945 = 5.65715
